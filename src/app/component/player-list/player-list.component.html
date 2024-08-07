@@ -1,0 +1,22 @@
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido(s)</th>
+            <th scope="col">Nombre de usuario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let player of players">
+            <td>{{ player.id }}</td>
+            <td>{{ player.firstName }}</td>
+            <td>{{ player.lastName }}</td>
+            <td>{{ player.username }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
