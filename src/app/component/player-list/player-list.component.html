@@ -3,20 +3,23 @@
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">id</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido(s)</th>
             <th scope="col">Nombre de usuario</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let player of players">
-            <td>{{ player.id }}</td>
             <td>{{ player.firstName }}</td>
             <td>{{ player.lastName }}</td>
             <td>{{ player.username }}</td>
+            <td> <a routerLink= "./{{player.id}}" class="btn btn-info">Detalles</a></td>
+            <td> <a routerLink= "./{{player.id}}/edit" class="btn btn-info">Editar</a></td>
           </tr>
         </tbody>
       </table>
     </div>
+  <router-outlet />
   </div>

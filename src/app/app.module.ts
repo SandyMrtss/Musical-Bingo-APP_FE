@@ -1,29 +1,25 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
-import { PlayerListComponent } from './component/player-list/player-list.component';
-import { PlayerService } from './service/player.service';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { PlayerFormComponent } from './component/player-form/player-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+
+import { AppComponent } from './app.component';
+import { PlayerService } from './service/player.service';
+import { RouterOutlet } from '@angular/router';
+
 
 @NgModule({
-  declarations: [
-    PlayerListComponent,
-    PlayerFormComponent,
-    AppComponent
-  ],
+  declarations: [],
   imports: [
+    AppComponent,
     BrowserModule,
-    AppRoutingModule,
+    FormsModule,    
     HttpClientModule,
-    AppRoutingModule,
-    FormsModule,
-    CommonModule
+    CommonModule,
+    RouterOutlet,
     ],
   providers: [PlayerService],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }

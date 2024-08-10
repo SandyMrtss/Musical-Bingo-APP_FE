@@ -1,41 +1,72 @@
-<div class="card my-5">
-    <div class="card-body">
-      <form (ngSubmit)="onSubmit()" #playerForm="ngForm">
+<div class="card my-5" >
+  <div class="card-body">
+    <div *ngIf="player.id" class="edit-form">
+      <h4>Jugador</h4>
+      <form (ngSubmit)="updatePlayer()" #playerForm="ngForm">
+        <div class="form-group" hidden>
+          <label for="id">id</label>
+          <input
+            readonly
+            type="number"
+            class="form-control"
+            id="id"
+            [(ngModel)]="player.id"
+            name="id"
+          />
+        </div>
         <div class="form-group">
           <label for="firstName">Nombre</label>
-          <input type="text" [(ngModel)]="player.firstName" 
-            class="form-control" 
-            id="firstName" 
-            name="firstName" 
-            placeholder="Introduce tu nombre"
-            required #firstName="ngModel">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="player.firstName"
+            name="firstName"
+            required #firstName="ngModel"
+          />
         </div>
-        <div [hidden]="!firstName.pristine" class="alert alert-danger">First name is required</div>
+        <div [hidden]="player.firstName" class="alert alert-danger">El nombre no puede ser nulo</div>
         <div class="form-group">
-            <label for="lastName">Apellido(s)</label>
-            <input type="text" [(ngModel)]="player.lastName" 
-              class="form-control" 
-              id="lastName" 
-              name="lastName" 
-              placeholder="Introduce tu(s) apellido(s)"
-              required #lastName="ngModel">
-          </div>
-          <div [hidden]="!lastName.pristine" class="alert alert-danger">Last name is required</div>
-          
-          <div class="form-group">
-            <label for="username">Nombre de jugador</label>
-            <input type="text" [(ngModel)]="player.username" 
-              class="form-control" 
-              id="username" 
-              name="username" 
-              placeholder="Introduce tu nombre de jugador"
-              required #username="ngModel">
-          </div>
-          <div [hidden]="!username.pristine" class="alert alert-danger">Username is required</div>
-          
-        <button type="submit" [disabled]="!playerForm.form.valid" 
-          class="btn btn-info">Crear</button>
+          <label for="lastName">Apellido(s)</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="player.lastName"
+            name="lastName"
+            required #lastName="ngModel"
+          />
+        </div>
+        <div [hidden]="player.lastName" class="alert alert-danger">Introduce por lo menos un apellido</div>
+        <div class="form-group">
+          <label for="username">Nombre de jugador</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="player.username"
+            name="username"
+            required #username="ngModel"
+          />
+        </div>
+        <div [hidden]="player.username" class="alert alert-danger">Un nombre de jugador es necesario</div>
+        <ul class="text-center list-inline py-3">
+          <li class="list-inline-item">
+            <button  class="btn btn-danger" (click)="deletePlayer()">Eliminar</button>
+          </li>
+          <li class="list-inline-item">
+            <button
+            type="submit"
+            [disabled]="!playerForm.form.valid"
+            class="btn btn-success">
+            Guardar cambios
+          </button>
+          </li>
+        </ul>
       </form>
     </div>
-  </div>
   
+   <div *ngIf="!player.id">
+      <br />
+      <p>Jugador desconocido...</p>
+    </div>
+    </div> 
+</div>
+<router-outlet />
